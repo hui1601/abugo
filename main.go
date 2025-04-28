@@ -765,12 +765,12 @@ func min(a, b int) int {
 
 func usage() {
 	_, _ = fmt.Fprintf(os.Stderr, "Usage:\n")
-	_, _ = fmt.Fprintf(os.Stderr, "  go run abe.go unpack <backup.ab> <backup.tar> [password]\n\n")
+	_, _ = fmt.Fprintf(os.Stderr, "  abugo unpack <backup.ab> <backup.tar> [password]\n\n")
 	_, _ = fmt.Fprintf(os.Stderr, "Arguments:\n")
 	_, _ = fmt.Fprintf(os.Stderr, "  <backup.ab>   Path to the Android backup file (.ab) or '-' for stdin.\n")
 	_, _ = fmt.Fprintf(os.Stderr, "  <backup.tar>  Path to write the extracted tar file or '-' for stdout.\n")
 	_, _ = fmt.Fprintf(os.Stderr, "  [password]    Optional password for encrypted backups.\n\n")
-	_, _ = fmt.Fprintf(os.Stderr, "If the password argument is not provided, the ABE_PASSWD environment variable will be checked.\n")
+	_, _ = fmt.Fprintf(os.Stderr, "If the password argument is not provided, the ABUGO_PASSWD environment variable will be checked.\n")
 }
 
 func main() {
@@ -791,9 +791,9 @@ func main() {
 
 	// Check env var for password if not provided
 	if password == "" {
-		envPassword := os.Getenv("ABE_PASSWD")
+		envPassword := os.Getenv("ABUGO_PASSWD")
 		if envPassword != "" {
-			log.Println("Using password from ABE_PASSWD environment variable.")
+			log.Println("Using password from ABUGO_PASSWD environment variable.")
 			password = envPassword
 		}
 	}
